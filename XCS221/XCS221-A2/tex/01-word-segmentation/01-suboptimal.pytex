@@ -1,0 +1,22 @@
+\item \points{1a}
+
+Consider the following greedy algorithm: Begin at the front of the string. Find
+the ending position for the next word that minimizes the language model cost.
+Repeat, beginning at the end of this chosen segment.
+
+Show that this greedy search is suboptimal.  In particular, provide an example
+input string on which the greedy approach would fail to find the lowest-cost
+segmentation of the input.
+
+In creating this example, you are free to design the $n$-gram cost function ---
+both the choice of $n$ and the cost of any $n$-gram sequences --- but costs must
+be positive, and lower cost should indicate better fluency. Note that the cost
+function doesn't need to be explicitly defined. You can just point out the
+relative cost of different word sequences that are relevant to the example you
+provide. And your example should be based on a realistic English word sequence 
+--- don't simply use abstract symbols with designated costs.
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_1a(.*?)% <SCPD_SUBMISSION_TAG>_1a', f.read(), re.DOTALL)).group(1))
+🐍

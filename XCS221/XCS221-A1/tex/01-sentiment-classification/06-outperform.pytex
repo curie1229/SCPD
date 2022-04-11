@@ -1,0 +1,19 @@
+\item \points{1f}
+
+Run your linear predictor with feature extractor |extractCharacterFeatures|.
+Experiment with different values of $n$ to see which one produces the smallest
+test error.  You should observe that this error is nearly as small as that
+produced by word features.  How do you explain this?
+
+Construct a review (one sentence max) in which character $n$-grams probably
+outperform word features, and briefly explain why this is so.
+
+{\em Note: You should replace the |featureExtractor| in |test_2()| in
+|grader.py|, i.e., let
+|featureExtractor = submission.extractCharacterFeatures(__)| and report your
+results. Don't forget to recover |test_2()| after finishing this question.}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_1f(.*?)% <SCPD_SUBMISSION_TAG>_1f', f.read(), re.DOTALL)).group(1))
+🐍

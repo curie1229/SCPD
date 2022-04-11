@@ -1,0 +1,225 @@
+\item {\bf Course Scheduling}
+
+In this problem, we will apply your weighted CSP solver to the problem of course
+scheduling. We have scraped a subset of courses that are offered from Stanford's
+Bulletin. For each course in this dataset, we have information on which quarters
+it is offered, the prerequisites (which may not be fully accurate due to
+ambiguity in the listing), and the range of units allowed. You can take a look
+at all the courses in |courses.json|. Please refer to |util.Course| and
+|util.CourseBulletin| for more information.
+
+To specify a desired course plan, you would need to provide a {\em profile}
+which specifies your constraints and preferences for courses. A profile is
+specified in a text file (see |profile*.txt| for examples). The profile file has
+four sections:
+\begin{itemize}
+  \item The first section specifies a fixed minimum and maximum (inclusive)
+  number of units you need to take for each quarter. For example:
+\begin{lstlisting}
+minUnits 0
+maxUnits 3
+\end{lstlisting}
+
+  \item In the second section, you |register| for the quarters that you want to
+  take your courses in.  For example,
+\begin{lstlisting}
+register Aut2018
+register Win2019
+register Spr2019
+\end{lstlisting}
+
+  would sign you up for this academic year. The quarters need not be contiguous,
+  but they must follow the exact format |XxxYYYY| where |Xxx| is one of
+  |Aut, Win, Spr, Sum| and |YYYY| is the year.
+  
+  \item The third section specifies the list of courses that you've taken in the
+  past and elsewhere using the |taken| keyword. For example, if you're in CS221,
+  this is probably what you would put:
+\begin{lstlisting}
+taken CS103
+taken CS106B
+taken CS107
+taken CS109
+\end{lstlisting}
+
+  \item The last section is a list of courses that you would like to take during
+  the registered quarters, specified using |request|. For example, two basic
+  requests would look like this:
+\begin{lstlisting}
+request CS224N
+request CS229
+\end{lstlisting}
+
+Not every request must be fulfilled, and indeed, due to the additional
+constraints described below, it is possible that not all of them can actually be
+fulfilled.
+\end{itemize}
+
+{\bf Constrained requests.}
+To allow for more flexibility in your preferences, we allow some freedom to
+customize the requests:
+\begin{itemize}
+  \item You can request to take exclusively one of several courses but not sure
+  which one, then specify:
+\begin{lstlisting}
+request CS229 or CS229A or CS229T
+\end{lstlisting}
+
+
+  Note that these courses do not necessarily have to be offered in the same
+  quarter. The final schedule can have at most one of these three courses.
+  {\bf Each course can only be requested at most once.}
+
+  \item If you want to take a course in one of a specified set of quarters, use
+  the |in| modifier. For example, if you want to take one of CS221 or CS229 in
+  either Aut2018 {\bf or} Sum2019, do:
+\begin{lstlisting}
+request CS221 or CS229 in Aut2018,Sum2019
+\end{lstlisting}
+
+  If you do not specify any quarters, then the course can be taken in any quarter.
+
+  \item Another operator you can apply is |after|, which specifies that a course
+  must be taken after another one. For example, if you want to choose one of
+  CS221 or CS229 and take it after both CS109 {\bf and} CS161, add:
+\begin{lstlisting}
+request CS221 or CS229 after CS109,CS161
+\end{lstlisting}
+
+  Note that this implies that if you take CS221 or CS229, then you must take
+  both CS109 and CS161. In this case, we say that CS109 and CS161 are |prereqs|
+  of this request. (Note that there's {\bf no space} after the comma.)
+
+  If you request course A and B (separately), and A is an official prerequisite
+  of B based on the |CourseBulletin|, we will automatically add A as a
+  prerequisite for B; that is, typing |request B| is equivalent to
+  |request B after A|. Note that if B is a prerequisite of A, to request A, you
+  must either request B or declare you've taken B before.
+
+  \item Finally, the last operator you can add is |weight|, which adds
+  non-negative weight to each request. All requests have a default weight
+  value of 1. Requests with higher weight should be preferred by your CSP
+  solver. Note that you can combine all of the aforementioned operators into one
+  as follows (again, no space after comma):
+\begin{lstlisting}
+request CS221 or CS229 in Win2018,Win2019 after CS131 weight 5
+\end{lstlisting}
+\end{itemize}
+
+Each |request| line in your profile is represented in code as an instance of the
+|Request| class (see |util.py|). For example, the request above would have the
+following fields:
+\begin{itemize}
+    \item |cids| (course IDs that you're choosing one of) with value
+    |['CS221', 'CS229']|
+    \item |quarters| (that you're allowed to take the courses) with value |['Win2018', 'Win2019']|
+    \item |prereqs| (course IDs that you must take before) with value |['CS131']|
+    \item |weight| (preference) with value |5.0|
+\end{itemize}
+
+It's important to note that a request does not have to be fulfilled,
+{\em but if it is}, the constraints specified by the various operators
+|after,in| must also be satisfied.
+
+You shall not worry about parsing the profiles because we have done all the
+parsing of the bulletin and profile for you, so all you need to work with is the
+collection of |Request| objects in |Profile| and |CourseBulletin| to know when
+courses are offered and the number of units of courses.
+
+Well, that's a lot of information! Let's open a python shell and see them in
+action:
+\begin{lstlisting}
+(XCS221) $ python
+Python 3.6.9
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import util
+>>> # load bulletin
+...
+>>> bulletin = util.CourseBulletin(`courses.json')
+>>> # retrieve information of CS221
+...
+>>> cs221 = bulletin.courses[`CS221']
+>>> print(cs221)
+(look at various properties of the course)
+>>> print(cs221.cid)
+CS221
+>>> print(cs221.minUnits)
+3
+>>> print(cs221.maxUnits)
+4
+>>> print(cs221.prereqs)  # the prerequisites
+[`CS107', `CS103', `CS106X', `CS106B']
+>>> print(cs221.is_offered_in(`Aut2018'))
+True
+>>> print(cs221.is_offered_in(`Win2019'))
+False
+>>> # load profile from profile_example.txt
+...
+>>> profile = util.Profile(bulletin, `profile_example.txt')
+>>> # see what it's about
+...
+>>> profile.print_info()
+Units: 3-9
+Quarter: [`Aut2017', `Win2018']
+Taken: {'CS229'}
+Requests:
+  Request{[`CS228'] [`Aut2017'] [] 1}
+  Request{[`CS229T'] [] [`CS228'] 2.0}
+>>> # iterate over the requests and print out the properties
+...
+>>> for request in profile.requests:
+...   print(request.cids, request.quarters, request.prereqs, request.weight)
+...
+[`CS228'] [`Aut2017'] [] 1
+[`CS229T'] [] [`CS228'] 2.0
+>>> exit()
+\end{lstlisting}
+
+{\bf Solving the CSP.}
+
+Your task is to take a profile and bulletin and construct a CSP. We have started
+you off with code in |SchedulingCSPConstructor| that constructs the core
+variables of the CSP as well as some basic constraints. The variables are all
+pairs of requests and registered quarters |(request, quarter)|, and the value of
+such a variable is one of the course IDs in that Request or |None|, which
+indicates none of the courses should be taken in that quarter. We will add
+auxiliary variables later. We have also implemented some basic constraints:
+|add_bulletin_constraints()|, which enforces that a course can only be taken if
+it's offered in that quarter (according to the bulletin), and
+|add_norepeating_constraints()|, which constrains that no course can be taken
+more than once.
+
+You should take a look at |add_bulletin_constraints()| and 
+|add_norepeating_constraints()| to get a basic understanding how the CSP for
+scheduling is represented. Nevertheless, we'll highlight some important details
+to make it easier for you to implement:
+
+
+
+\begin{itemize}
+  \item The existing variables are tuples of |(request, quarter)| where
+  |request| is a |Request| object (like the one shown above) and |quarter| is a
+  |str| representing a quarter (e.g. |'Aut2018'|). For detail please look at
+  |SchedulingCSPConstructor.add_variables()|.
+  
+  \item The domain of each variable |(request, quarter)| is the course IDs of
+  the request {\bf plus} |None| (e.g. |['CS221', 'CS229', None]|). When the
+  value |cid| is |None|, this means no course is scheduled for this request.
+  {\bf Always remember to check if |cid| is |None|}.
+  
+  \item The domain for |quarter| is all possible quarters
+  (|self.profile.quarters|, e.g. |['Win2016', 'Win2017']|).
+  
+  \item Given a course ID |cid|, you can get the corresponding |Course| object
+  by |self.bulletin.courses[cid]|.
+\end{itemize}
+
+\begin{enumerate}
+
+  \input{04-course-scheduling/01-add-quarter-constraints}
+
+  \input{04-course-scheduling/02-add-unit-constraints}
+
+  \input{04-course-scheduling/03-profile}
+
+\end{enumerate}

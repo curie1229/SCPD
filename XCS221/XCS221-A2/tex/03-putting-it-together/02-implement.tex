@@ -1,0 +1,31 @@
+\item \points{3b}
+Implement an algorithm that finds the optimal space and vowel insertions.  Use
+the UCS subroutines.
+
+When you've completed your implementation, the function |segmentAndInsert|
+should return a segmented and reconstructed word sequence as a string with space
+delimiters, i.e. |` '.join(filledWords)|.
+
+The argument |query| is the input string of space- and vowel-free words.  The
+argument |bigramCost| is a function that takes two strings representing two
+sequential words and provides their bigram score.  The special out-of-vocabulary
+beginning-of-sentence word |-BEGIN-| is given by |wordsegUtil.SENTENCE_BEGIN|.
+The argument |possibleFills| is a function that takes a word as a string and
+returns a |set| of reconstructions.
+
+{\em Note: In problem 2, a vowel-free word could, under certain circumstances,
+be considered a valid reconstruction of itself. However, for this problem, in
+your output, you should only include words that are the reconstruction of some
+vowel-free word according to |possibleFills|.  Additionally, you should not
+include words containing only vowels such as |a| or |i|; all words should
+include at least one consonant from the input string.
+
+Use the command |both| in the program console to try your implementation.  For
+example:
+\begin{lstlisting}
+>> both mgnllthppl
+
+Query (both): mgnllthppl
+
+imagine all the people
+\end{lstlisting}}

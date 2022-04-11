@@ -1,0 +1,28 @@
+\item \points{1c}
+The previous heuristics looked only at the local effects of a variable or value.
+Let's now implement arc consistency (AC-3) that we discussed in lecture. After
+we set variable $X_j$ to value $a$, we remove the values $b$ of all neighboring
+variables $X_k$ that could cause arc-inconsistencies. If $X_k$'s domain has
+changed, we use $X_k$'s domain to remove values from the domains of its
+neighboring variables. This is repeated until no domain can be updated. Note
+that this may significantly reduce your branching factor, although at some cost.
+In |backtrack()| we've implemented code which copies and restores domains for
+you. Your job is to fill in |arc_consistency_check()|.
+
+You should make sure that your existing MCV implementation is compatible with
+your AC-3 algorithm as we will be using all three heuristics together during
+grading.
+
+With AC-3 enabled, it should take you 769 operations only to find all optimal
+assignments to 8 queens CSP --- That is almost 45\% fewer even compared with
+MCV!
+
+{\bf Take a deep breath! This part requires time and effort to implement --- be
+patient.}
+
+{\em Hint 1: documentation for |CSP.add_unary_factor()| and
+|CSP.add_binary_factor()| can be helpful.
+
+Hint 2: although AC-3 works recursively, you may implement it iteratively. Using
+a queue might be a good idea. |li.pop(0)| removes and returns the first element
+for a python list |li|.}

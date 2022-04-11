@@ -1,0 +1,20 @@
+\item \points{4a}
+You will first implement a generic Q-learning algorithm |QLearningAlgorithm|,
+which is an instance of an |RLAlgorithm|.  As discussed in class, reinforcement
+learning algorithms are capable of executing a policy while simultaneously
+improving that policy.  Look in |simulate()|, in |util.py| to see how the
+|RLAlgorithm| will be used.  In short, your |QLearningAlgorithm| will be run in
+a simulation of the MDP, and will alternately be asked for an action to perform
+in a given state (|QLearningAlgorithm.getAction|), and then be informed of the
+result of that action (|QLearningAlgorithm.incorporateFeedback|), so that it may
+learn better actions to perform in the future.
+
+We are using Q-learning with function approximation, which means
+$\hat Q_\text{opt}(s, a) = \mathbb W \cdot \phi(s, a)$, where in code,
+$\mathbb W$ is |self.weights|, $\phi$ is the |featureExtractor| function, and
+$\hat Q_\text{opt}$ is |self.getQ|.
+
+We have implemented |QLearningAlgorithm.getAction| as a simple $\epsilon$-greedy
+policy. Your job is to implement |QLearningAlgorithm.incorporateFeedback()|,
+which should take an $(s, a, r, s')$ tuple and update |self.weights| according
+to the standard Q-learning update.

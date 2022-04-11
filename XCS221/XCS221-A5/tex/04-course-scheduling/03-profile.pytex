@@ -1,0 +1,18 @@
+\item \points{3c}
+Now try to use the course scheduler for the winter and spring quarters (and next
+year if applicable). Create your own |profile.txt| and then run the course
+scheduler:
+\begin{lstlisting}
+python run_p3.py profile.txt
+\end{lstlisting}
+
+You might want to turn on the appropriate heuristic flags to speed up the
+computation. Does it produce a reasonable course schedule? Please include your
+|profile.txt| and the best schedule in your writeup; we're curious how it worked
+out for you! Please include your schedule and the profile in the PDF, otherwise
+you will not receive credit. 
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_3c(.*?)% <SCPD_SUBMISSION_TAG>_3c', f.read(), re.DOTALL)).group(1))
+🐍

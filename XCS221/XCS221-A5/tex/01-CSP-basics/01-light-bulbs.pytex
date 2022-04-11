@@ -1,0 +1,20 @@
+\item \points{0a}
+Let's create a CSP. Suppose you have $n$ light bulbs, where each light bulb
+$i = 1, \dots, n$ is initially off. You also have $m$ buttons which control the
+lights. For each button $j = 1, \dots, m$, we know the subset $T_j \subseteq
+\{ 1, \dots, n \}$ of light bulbs that it controls. When button $j$ is pressed,
+it toggles the state of each light bulb in $T_j$ (For example, if $3 \in T_j$
+and light bulb 3 is off, then after the button is pressed, light bulb 3 will be
+on, and vice versa).
+
+Your goal is to turn on all the light bulbs by pressing a subset of the buttons.
+Construct a CSP to solve this problem. Your CSP should have $m$ variables and
+$n$ constraints. {\em For this problem only}, you can use $n$-ary constraints.
+Describe your CSP precisely and concisely. You need to specify the variables
+with their domain, and the constraints with their scope and expression. Make
+sure to include $T_j$ in your answer.
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_0a(.*?)% <SCPD_SUBMISSION_TAG>_0a', f.read(), re.DOTALL)).group(1))
+🐍

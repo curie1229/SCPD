@@ -1,0 +1,16 @@
+\item \points{4b}
+Now let's apply Q-learning to an MDP and see how well it performs in comparison
+with value iteration.  First, call |simulate| using your Q-learning code and the
+|identityFeatureExtractor()| on the MDP |smallMDP| (defined for you in
+|submission.py|), with 30000 trials. How does the Q-learning policy compare with
+a policy learned by value iteration (i.e., for how many states do they produce a
+different action)? (Don't forget to set the explorationProb of your Q-learning
+algorithm to 0 after learning the policy.) Now run |simulate()| on |largeMDP|,
+again with 30000 trials.  How does the policy learned in this case compare to
+the policy learned by value iteration?  What went wrong?
+
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_4b(.*?)% <SCPD_SUBMISSION_TAG>_4b', f.read(), re.DOTALL)).group(1))
+🐍

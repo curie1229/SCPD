@@ -1,0 +1,52 @@
+{\bf Warmup}
+
+First, play a game of classic Pac-Man to get a feel for the assignment:
+
+\begin{lstlisting}
+(XCS221)$ python pacman.py
+\end{lstlisting}
+
+You can always add |--frameTime 1| to the command line to run in "demo mode"
+where the game pauses after every frame.
+
+Now, run the provided |ReflexAgent| in |submission.py|:
+
+\begin{lstlisting}
+(XCS221)$ python pacman.py -p ReflexAgent
+\end{lstlisting}
+
+Note that it plays quite poorly even on simple layouts:
+
+\begin{lstlisting}
+(XCS221)$ python pacman.py -p ReflexAgent -l testClassic
+\end{lstlisting}
+
+You can also try out the reflex agent on the default |mediumClassic| layout with
+one ghost or two.
+
+\begin{lstlisting}
+(XCS221)$ python pacman.py -p ReflexAgent -k 1
+(XCS221)$ python pacman.py -p ReflexAgent -k 2
+\end{lstlisting}
+
+{\em Note: You can never have more ghosts than the layout permits (see
+|src/layouts/mediumClassic.lay|).}
+
+{\em Options: Default ghosts are random; you can also play for fun with slightly
+smarter directional ghosts using |-g DirectionalGhost|. You can also play
+multiple games in a row with |-n|. Turn off graphics with |-q| to run lots of
+games quickly.}
+
+Now that you are familiar enough with the interface, inspect the |ReflexAgent|
+code carefully (in |submission.py|) and make sure you understand what it's
+doing. The reflex agent code provides some helpful examples of methods that
+query the |GameState|: A |GameState| object specifies the full game state,
+including the food, capsules, agent configurations, and score changes: see
+|submission.py| for further information and helper methods, which you will be
+using in the actual coding part. We are giving an exhaustive and very detailed
+description below, for the sake of completeness and to save you from digging
+deeper into the starter code. The actual coding part is very small -- so please
+be patient if you think there is too much writing.
+
+{\em Note: If you wish to run the game in the terminal using a text-based
+interface, check out the |terminal| directory.}

@@ -1,0 +1,12 @@
+\item \points{0c}
+Now let's consider a general case: given a factor graph with $n$ variables
+$X_1,...,X_n$ and $n-1$ binary factors $t_1,...,t_{n-1}$ where $X_i \in \{0,1\}$
+and $t_i(X) = x_i \bigoplus x_{i+1}$. Note that the CSP has a chain structure.
+Implement |create_chain_csp()| by creating a generic chain CSP with XOR as
+factors.
+
+{\em Note: We've provided you with a CSP implementation in |util.py| which
+supports unary and binary factors. For now, you don't need to understand the
+implementation, but please read the comments and get yourself familiar with the
+CSP interface. For this problem, you'll need to use |CSP.add_variable()| and
+|CSP.add_binary_factor()|.}

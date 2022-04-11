@@ -1,0 +1,15 @@
+\item \points{2a}
+Suppose we have a CSP with three variables $X_1, X_2, X_3$ with the same domain
+$\{0,1,2\}$ and a ternary constraint $[X_1 + X_2 + X_3 \le K]$. How can we
+reduce this CSP to one with only unary and/or binary constraints? Explain what
+auxiliary variables we need to introduce, what their domains are, what
+unary/binary factors you'll add, and why your scheme works. Add a graph if you
+think that'll better explain your scheme.
+
+{\em Hint: draw inspiration from the example of enforcing $[X_i=1\ \text{for
+exactly one}\ i]$ which is in the first CSP lecture.}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_2a(.*?)% <SCPD_SUBMISSION_TAG>_2a', f.read(), re.DOTALL)).group(1))
+🐍

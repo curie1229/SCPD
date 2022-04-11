@@ -1,0 +1,13 @@
+\item \points{2b}
+Suppose we have an acyclic MDP for which we want to find the optimal value at
+each node.  We could run value iteration, which would require multiple
+iterations -- but it would be nice to be more efficient for MDPs with this
+acyclic property. Briefly explain an algorithm that will allow us to compute
+$V_\text{opt}$ for each node with only a single pass over all the $(s, a, s')$
+triples.
+
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_2b(.*?)% <SCPD_SUBMISSION_TAG>_2b', f.read(), re.DOTALL)).group(1))
+🐍

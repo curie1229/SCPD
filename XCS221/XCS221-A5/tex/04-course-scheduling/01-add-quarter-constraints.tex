@@ -1,0 +1,11 @@
+\item \points{3a}
+Implement the function |add_quarter_constraints()| in |submission.py|. This is
+when your profile specifies which quarter(s) you want your requested courses to
+be taken in. This is not saying that one of the courses must be taken,
+{\em but if it is}, then it must be taken in any one of the specified quarters.
+Also note that this constraint will apply to all courses in that request.
+
+We have written a |verify_schedule()| function in |grader.py| that determines if
+your schedule satisfies all of the given constraints. Note that since we are not
+dealing with units yet, it will print |None| for the number of units of each
+course. For profile3a.txt, you should find 3 optimal assignments with weight 1.0.

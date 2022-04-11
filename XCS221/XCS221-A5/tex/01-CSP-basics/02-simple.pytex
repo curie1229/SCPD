@@ -1,0 +1,31 @@
+\item \points{0b}
+Let's consider a simple CSP with 3 variables and 2 binary factors:
+\begin{center}
+\includegraphics[width=0.2\textwidth]{media/0-a.png}
+\end{center}
+where $X_1,X_2,X_3 \in \{0,1\}$ and $t_1, t_2$ are
+\href{http://en.wikipedia.org/wiki/Exclusive_or}{XOR} functions (that is $t_1(X)
+= x_1 \bigoplus x_2$ and $t_2(X) = x_2 \bigoplus x_3$).
+
+\begin{enumerate}
+  \item How many consistent assignments are there for this CSP?
+  
+  \item To see why variable ordering is important, let's use backtracking search
+  to solve the CSP {\em without using any heuristics (MCV, LCV, AC-3) or
+  lookahead}. How many times will |backtrack()| be called to get all consistent
+  assignments if we use the fixed ordering $X_1,X_3,X_2$? Draw the call stack
+  for |backtrack()|.
+
+  (You should use the Backtrack algorithm from the slides. The initial arguments
+  are $x=\emptyset$, $w=1$, and the original Domain.) In the code, this will be
+  |BacktrackingSearch.numOperations|.
+  
+  \item To see why lookahead can be useful, let's do it again with the ordering
+  $X_1,X_3,X_2$ and AC-3. How many times will Backtrack be called to get all
+  consistent assignments? Draw the call stack for |backtrack()|.
+\end{enumerate}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_0b(.*?)% <SCPD_SUBMISSION_TAG>_0b', f.read(), re.DOTALL)).group(1))
+🐍

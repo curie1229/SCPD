@@ -1,0 +1,12 @@
+\item \points{3b}
+Fill in |ExpectimaxAgent|, where your agent will no longer take the min over all ghost actions, but the expectation according to your agent's model of how the ghosts act. Assume Pac-Man is playing against multiple |RandomGhost|, which each chooses |getLegalActions| uniformly at random.
+
+You should now observe a more cavalier approach to close quarters with ghosts. In particular, if Pac-Man perceives that he could be trapped but might escape to grab a few more pieces of food, he'll at least try.
+
+\begin{lstlisting}
+python pacman.py -p ExpectimaxAgent -l trappedClassic -a depth=3
+\end{lstlisting}
+
+You may have to run this scenario a few times to see Pac-Man's gamble pay off. Pac-Man would win half the time on average, and for this particular command, the final score would be -502 if Pac-Man loses and 532 or 531 (depending on your tiebreaking method and the particular trial) if it wins. {\bf You can use these numbers to validate your implementation.}
+
+Why does Pac-Man's behavior as an expectimax agent differ from his behavior as a minimax agent (i.e., why doesn't he head directly for the ghosts)? Again, just think about it; no need to write it up.

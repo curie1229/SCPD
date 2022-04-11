@@ -1,0 +1,17 @@
+\item \points{1a}
+Let's create a CSP to solve the n-queens problem: Given an $n\times n$ board,
+we'd like to place $n$ queens on this board such that no two queens are on the
+same row, column, or diagonal. Implement |create_nqueens_csp()| by {\bf adding
+$n$ variables} and some number of binary factors. Note that the solver collects
+some basic statistics on the performance of the algorithm. You should take
+advantage of these statistics for debugging and analysis. You should get 92
+(optimal) assignments for $n=8$ with exactly 2057 operations (number of calls to
+|backtrack()|). 
+
+{\em Hint: If you get a larger number of operations, make sure your CSP is
+minimal. Try to define the variables such that the size of domain is O(n).
+
+Note: Please implement the domain of variables as 'list' type in Python (again,
+you may refer to |create_map_coloring_csp()| and |create_weighted_csp()| in
+|util.py| as examples of CSP problem implementations), so you can compare the
+number of operations with our suggestions as a way of debugging.}

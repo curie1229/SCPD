@@ -1,0 +1,10 @@
+\item \points{3a}
+
+Consider a search problem for finding the optimal space and vowel insertions.
+Formalize the problem as a search problem: What are the states, actions, costs,
+initial state, and end test? Try to find a minimal representation of the states.
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_3a(.*?)% <SCPD_SUBMISSION_TAG>_3a', f.read(), re.DOTALL)).group(1))
+🐍

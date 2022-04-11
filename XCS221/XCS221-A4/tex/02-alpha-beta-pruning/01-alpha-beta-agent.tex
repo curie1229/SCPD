@@ -1,0 +1,21 @@
+\item \points{2a}
+Make a new agent that uses alpha-beta pruning to more efficiently explore the
+minimax tree in |AlphaBetaAgent|. Again, your algorithm will be slightly more
+general than the pseudo-code in the slides, so part of the challenge is to
+extend the alpha-beta pruning logic appropriately to multiple minimizer agents.
+
+You should see a speed-up: Perhaps depth 3 alpha-beta will run as fast as depth
+2 minimax. Ideally, depth 3 on |mediumClassic| should run in just a few seconds
+per move or faster.
+
+\begin{lstlisting}
+python pacman.py -p AlphaBetaAgent -a depth=3
+\end{lstlisting}
+
+The |AlphaBetaAgent| minimax values should be identical to the |MinimaxAgent|
+minimax values, although the actions it selects can vary because of different
+tie-breaking behavior. Again, the minimax values of the initial state in the
+|minimaxClassic| layout are 9, 8, 7, and -492 for depths 1, 2, 3, and 4,
+respectively. Running the command given above this paragraph, which uses the
+default |mediumClassic| layout, the minimax values of the initial state should
+be 9, 18, 27, and 36 for depths 1, 2, 3, and 4, respectively.

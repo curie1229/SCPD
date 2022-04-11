@@ -1,0 +1,19 @@
+\item \points{2a}
+If we add noise to the transitions of an MDP, does the optimal value always get
+worse? Specifically, consider an MDP with reward function $\text{Reward}
+(s,a,s')$, states $\text{States}$, and transition function $T(s,a,s')$.  Let's
+define a new MDP which is identical to the original, except that on each action,
+with probability $\frac{1}{2}$, we randomly jump to one of the states that we
+could have reached before with positive probability.
+
+Formally, this modified transition function is:
+\[T'(s,a,s')= \frac{1}{2} T(s,a,s') + \frac{1}{2} \cdot \frac{1}{\{ s'' : T(s, a, s'') > 0\}}.\]
+
+Let $V_1$ be the optimal value function for the original MDP, and $V_2$ the
+optimal value function for the modified MDP. Is it always the case that $V_1
+(s_\text{start})\geq V_2(s_\text{start})$?  If so, prove it in |blackjack.pdf|
+and put |return None| for each of the code blocks. Otherwise, construct a
+counterexample by filling out |CounterexampleMDP| in |submission.py|.
+
+% BEGIN_HIDE
+% END_HIDE

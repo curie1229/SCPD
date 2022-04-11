@@ -1,0 +1,48 @@
+\def\assignmentnum{5 }
+\def\assignmentname{Course Scheduling}
+\def\assignmenttitle{XCS221 Assignment \assignmentnum --- \assignmentname}
+
+
+\input{macros}
+\input{py-macros}
+
+\begin{document}
+
+\pagestyle{myheadings} \markboth{}{\assignmenttitle}
+
+{\huge\noindent \assignmenttitle}
+
+\ruleskip
+
+{\bf Due {\due }.}
+
+\medskip
+
+\input{00-instructions/00-main}
+
+\ruleskip
+
+\clearpage
+
+\include{00-intro}
+\clearpage
+
+\begin{enumerate}[wide, labelindent=0pt, start=0]
+
+  \input{01-CSP-basics/00-main}
+  \clearpage
+
+  \input{02-CSP-solving/00-main}
+  \clearpage
+
+  \input{03-handling-n-ary-factors/00-main}
+  \clearpage
+
+  \input{04-course-scheduling/00-main}
+  \clearpage
+
+\end{enumerate}
+
+\include{00-outro}
+
+\end{document}

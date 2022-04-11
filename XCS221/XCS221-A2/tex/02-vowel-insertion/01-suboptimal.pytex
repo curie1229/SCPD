@@ -1,0 +1,15 @@
+\item \points{2a}
+Consider the following greedy-algorithm: from left to right, repeatedly pick the
+immediate-best vowel insertion for the current vowel-free word, given the
+insertion that was chosen for the previous vowel-free word. This algorithm does
+{\em not} take into account future insertions beyond the current word.
+
+Show, as in problem 1, that this greedy algorithm is suboptimal, by providing a
+realistic counter-example using English text. Make any assumptions you'd like
+about |possibleFills| and the bigram cost function, but bigram costs must remain
+positive.
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_2a(.*?)% <SCPD_SUBMISSION_TAG>_2a', f.read(), re.DOTALL)).group(1))
+🐍

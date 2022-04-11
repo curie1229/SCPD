@@ -1,0 +1,10 @@
+\item \points{1a}
+Give the value of $V_\text{opt}(s)$ for each state $s$ after 0, 1, and 2
+iterations of value iteration. Iteration 0 just initializes all the values of
+$V$ to 0. Terminal states do not have any optimal policies and take on a value
+of 0.
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_1a(.*?)% <SCPD_SUBMISSION_TAG>_1a', f.read(), re.DOTALL)).group(1))
+🐍

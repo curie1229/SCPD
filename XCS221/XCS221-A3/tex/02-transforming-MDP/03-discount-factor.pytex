@@ -1,0 +1,21 @@
+\item \points{2c}
+
+Suppose we have an MDP with states $S$ and a discount factor $\lambda<1$, but we
+have an MDP solver that can only solve MDPs with discount factor of 1. How can
+we leverage the MDP solver to solve the original MDP?
+
+Let us define a new MDP with states $S'=S \cup{} \{o\}$, where $o$ is a new
+state. Let's use the same actions ($A'(s)=A(s)$), but we need to keep the
+discount $\lambda'=1$. Your job is to define new transition probabilities
+$T'(s,a,s')$ and rewards $R'(s,a,s')$ in terms of the old MDP such that the
+optimal values $V_\text{opt}(s)$ for all $s\in S$ are equal under the original
+MDP and the new MDP.
+
+{\em Hint: If you're not sure how to approach this problem, go back to the first
+MDP lecture and read closely the slides on convergence.}
+
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_2c(.*?)% <SCPD_SUBMISSION_TAG>_2c', f.read(), re.DOTALL)).group(1))
+🐍

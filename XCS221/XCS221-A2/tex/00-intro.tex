@@ -1,0 +1,86 @@
+{\bf Introduction}
+
+In this assignment, you will consider two tasks: {\em word segmentation} and {\em vowel
+insertion}.
+
+Word segmentation often comes up when processing many non-English languages, in
+which words might not be flanked by spaces on either end, such as written
+Chinese or long compound German words.\footnote{In German,
+``Windschutzscheibenwischer'' is ``windshield wiper''. Broken into parts:
+``wind'' \textrightarrow ``wind''; ``schutz'' \textrightarrow ``block/
+protection''; ``scheiben'' \textrightarrow ``panes''; ``wischer''
+\textrightarrow ``wiper''.} Vowel insertion is relevant for languages like
+Arabic or Hebrew, where modern script eschews notations for vowel sounds and the
+human reader infers them from context.\footnote{See
+\url{https://en.wikipedia.org/wiki/Abjad}.} More generally, this is an instance
+of a reconstruction problem with a lossy encoding and some context.
+
+You already know how to optimally solve any particular search problem with graph
+search algorithms such as uniform cost search or A*.  Your goal here is modeling
+--- that is, converting real-world tasks into state-space search problems.
+
+{\bf Setup: $n$-gram language models and uniform-cost search}
+
+Your algorithm will base its segmentation and insertion decisions on the cost of
+processed text according to a {\em language model}. A language model is some
+function of the processed text that captures its fluency.
+
+A very common language model in NLP is an $n$-gram sequence model. This is a
+function that, given $n$ consecutive words, provides a cost based on the
+negative log likelihood that the $n$-th word appears just after the first $n-1$
+words.\footnote{This model works under the assumption that text roughly
+satisfies the \href{https://en.wikipedia.org/wiki/Markov_property}{Markov
+ property.}}
+
+The cost will always be positive, and lower costs indicate better fluency.
+\footnote{Modulo edge cases, the $n$-gram model score in this assignment is
+given by $\ell(w_1, \ldots, w_n) = -\log(p(w_n \mid w_1, \ldots, w_{n-1}))$.
+Here, $p(\cdot)$ is an estimate of the conditional probability distribution over
+words given the sequence of previous $n-1$ words.  This estimate is gathered
+from frequency counts taken by reading Leo Tolstoy's {\em War and Peace} and
+William Shakespeare's {\em Romeo and Juliet}.}
+
+As a simple example: In a case where $n=2$ and $c$ is your $n$-gram cost
+function, $c(${\sf big}, {\sf fish}$)$ would be low, but $c(${\sf fish},
+{\sf fish}$)$ would be fairly high.
+
+Furthermore, these costs are additive: For a unigram model $u$ ($n = 1$), the
+cost assigned to $[w_1, w_2, w_3, w_4]$ is
+\[
+u(w_1) + u(w_2) + u(w_3) + u(w_4).
+\]
+
+Similarly, for a bigram model $b$ ($n = 2$), the cost is
+\[
+b(w_0, w_1) +
+b(w_1, w_2) +
+b(w_2, w_3) +
+b(w_3, w_4),
+\]
+
+where $w_0$ is |-BEGIN-|, a special token that denotes the beginning of the
+sentence.
+
+Estimate $u$ and $b$ based on the statistics of $n$-grams in text. Note
+that any words not in the corpus are automatically assigned a high cost, so you
+do not have to worry about that part.
+
+A note on low-level efficiency and expectations: This assignment was designed
+considering input sequences of length no greater than roughly 200, where these
+sequences can be sequences of characters or of list items, depending on the
+task.  Of course, it's great if programs can tractably manage larger inputs, but
+it's okay if such inputs can lead to inefficiency due to overwhelming state
+space growth.
+
+For convenience, you can run the terminal command |python submission.py| to
+enter a console for testing and debugging your code.  It should look like this:
+\begin{lstlisting}
+(XCS221)$ python submission.py
+Training language cost functions [corpus: leo-will.txt]... Done!
+
+>> 
+\end{lstlisting}
+
+Console commands like |seg|, |ins|, and |both| will be used in the upcoming
+parts of the assignment.  Other commands that might help with debugging can be
+found by typing |help| at the prompt.

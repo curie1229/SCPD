@@ -1,0 +1,14 @@
+\item \points{3a}
+Random ghosts are of course not optimal minimax agents, so modeling them with
+minimax search is not optimal. Instead, write down the recurrence for
+$V_{\text{exptmax}}(s,d)$, which is the maximum expected utility against ghosts
+that each follow the random policy, which chooses a legal move uniformly at
+random. Your recurrence should resemble that of problem 1a, which means that you
+should write it in terms of the same functions that were specified in problem
+1a.
+
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_3a(.*?)% <SCPD_SUBMISSION_TAG>_3a', f.read(), re.DOTALL)).group(1))
+🐍

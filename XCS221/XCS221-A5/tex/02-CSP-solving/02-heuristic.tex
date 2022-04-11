@@ -1,0 +1,21 @@
+\item \points{1b}
+You might notice that our search algorithm explores quite a large number of
+states even for the $8\times 8$ board. Let's see if we can do better. One
+heuristic we discussed in class is using most constrained variable (MCV): To
+choose an unassigned variable, pick the $X_j$ that has the fewest number of
+values $a$ which are consistent with the current partial assignment ($a$ for
+which |get_delta_weight()| on $X_j=a$ returns a non-zero value).
+
+Implement this heuristic in |get_unassigned_variable()| under the condition
+|self.mcv = True|. It should take you exactly 1361 operations to find all
+optimal assignments for 8 queens CSP --- that's 30\% fewer!
+
+Some useful fields:
+\begin{itemize}
+  \item |csp.unaryFactors[var][val]| gives the unary factor value.
+  \item |csp.binaryFactors[var1][var2][val1][val2]| gives the binary factor
+  value. Here, |var1| and |var2| are variables and |val1| and |val2| are their
+  corresponding values.
+  \item In |BacktrackingSearch|, if |var| has been assigned a value, you can
+  retrieve it using |assignment[var]|. Otherwise |var| is not in |assignment|.
+\end{itemize}

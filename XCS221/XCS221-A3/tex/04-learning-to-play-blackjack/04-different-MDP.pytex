@@ -1,0 +1,39 @@
+\item \points{4d}
+Sometimes, we might reasonably wonder how an optimal policy learned for one MDP
+might perform if applied to another MDP with similar structure but slightly
+different characteristics.  For example, imagine that you created an MDP to
+choose an optimal strategy for playing "traditional" blackjack, with a standard
+card deck and a threshold of 21.  You're living it up in Vegas every weekend,
+but the casinos get wise to your approach and decide to make a change to the
+game to disrupt your strategy: going forward, the threshold for the blackjack
+tables is 17 instead of 21.  If you continued playing the modified game with
+your original policy, how well would you do?  (This is just a hypothetical
+example; we won't look specifically at the blackjack game in this problem.)
+
+To explore this scenario, let's take a brief look at how a policy learned using
+value iteration responds to a change in the rules of the MDP.
+
+\begin{itemize}
+  \item First, run value iteration on the |originalMDP| (defined for you in
+  |submission.py|) to compute an optimal policy for that MDP.
+
+  \item Next, simulate your policy on |newThresholdMDP| (also defined for you in
+  |submission.py|) by calling |simulate| with an instance of |FixedRLAlgorithm|
+  that has been instantiated using the policy you computed with value iteration.
+  What is the expected reward from this simulation?
+
+  {\em Hint: read the
+  documentation (comments) for the |simulate| function in util.py, and look
+  specifically at the format of the function's return value.}
+
+  \item Now try simulating Q-learning directly on |newThresholdMDP| with
+  |blackjackFeatureExtractor| and the default exploration probability. What is
+  your expected reward under the new Q-learning policy?  Provide some
+  explanation for how the rewards compare, and why they are different.
+\end{itemize}
+
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_4d(.*?)% <SCPD_SUBMISSION_TAG>_4d', f.read(), re.DOTALL)).group(1))
+🐍

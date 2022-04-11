@@ -1,0 +1,19 @@
+\item {\bf Vowel Insertion}
+
+Now you are given a sequence of English words with their vowels missing (A, E,
+I, O, and U; never Y).  Your task is to place vowels back into these words in a
+way that maximizes sentence fluency (i.e., that minimizes sentence cost).  For
+this task, you will use a bigram cost function.
+
+You are also given a mapping |possibleFills| that maps any vowel-free word to a
+set of possible reconstructions (complete words).\footnote{This mapping was also
+obtained by reading Tolstoy and Shakespeare and removing vowels.} For example,
+|possibleFills(`fg')| returns |set([`fugue', `fog'])|.
+
+\begin{enumerate}
+
+  \input{02-vowel-insertion/01-suboptimal}
+
+  \input{02-vowel-insertion/02-insert-vowels}
+
+\end{enumerate}

@@ -1,0 +1,31 @@
+\item {\bf Value Iteration}
+
+In this problem, you will perform the value iteration updates manually on a very
+basic game just to solidify your intuitions about solving MDPs. The set of
+possible states in this game is \{-2, -1, 0, 1, 2\}.  You start at state 0, and
+if you reach either -2 or 2, the game ends. At each state, you can take one of
+two actions: \{-1, +1\}.
+
+If you're in state $s$ and choose -1:
+\begin{itemize}
+  \item You have an 80\% chance of reaching the state $s-1$.
+  \item You have a 20\% chance of reaching the state $s+1$.
+\end{itemize}
+
+If you're in state $s$ and choose +1:
+\begin{itemize}
+  \item You have a 30\% chance of reaching the state $s+1$.
+  \item You have a 70\% chance of reaching the state $s-1$.
+\end{itemize}
+
+If your action results in transitioning to state -2, then you receive a reward
+of 20. If your action results in transitioning to state 2, then your reward is
+100. Otherwise, your reward is -5. Assume the discount factor $\gamma$ is 1.
+
+\begin{enumerate}
+
+  \input{01-value-iteration/01-v-opt}
+
+  \input{01-value-iteration/02-pi-opt}
+
+\end{enumerate}

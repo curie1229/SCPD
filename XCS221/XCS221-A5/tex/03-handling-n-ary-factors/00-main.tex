@@ -1,0 +1,30 @@
+\item {\bf Handling $n$-ary Factors}
+
+So far, our CSP solver only handles unary and binary factors, but for course
+scheduling (and really any non-trivial application), we would like to define
+factors that involve more than two variables. It would be nice if we could have
+a general way of reducing $n$-ary constraint to unary and binary constraints.
+In this problem, we will do exactly that for two types of $n$-ary constraints.
+
+Suppose we have boolean variables $X_1, X_2, X_3$, where $X_i$ represents
+whether the $i$-th course is taken. Suppose we want to enforce the constraint
+that $Y = X_1 \vee X_2 \vee X_3$, that is, $Y$ is a boolean representing whether
+at least one course has been taken. For reference, in |util.py|, the function
+|get_or_variable()| does such a reduction. It takes in a list of variables and a
+target value, and returns a boolean variable with domain |[True, False]| whose
+value is constrained to the condition of having at least one of the variables
+assigned to the target value. For example, we would call |get_or_variable()|
+with arguments $(X_1,X_2,X_3,\text{True})$, which would return a new (auxiliary)
+variable $X_4$, and then add another constraint $[X_4=\text{True}]$.
+
+The second type of $n$-ary factors are constraints on the sum over $n$
+variables. You are going to implement reduction of this type but let's first
+look at a simpler problem to get started:
+
+\begin{enumerate}
+
+  \input{03-handling-n-ary-factors/01-ternary}
+
+  \input{03-handling-n-ary-factors/02-get-sum-variable-agent}
+
+\end{enumerate}

@@ -1,0 +1,14 @@
+\item \points{3d}
+We defined many different search techniques in class, so let's see how they
+relate to one another.
+
+Is UCS a special case of A*? Explain why or why not.
+
+Is BFS a special case of UCS? Explain why or why not.
+
+Your explanations can be short. 1 or 2 sentences will suffice.
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_3d(.*?)% <SCPD_SUBMISSION_TAG>_3d', f.read(), re.DOTALL)).group(1))
+🐍

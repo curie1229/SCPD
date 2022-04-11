@@ -1,0 +1,43 @@
+\item \points{1b}
+Implement an algorithm that, unlike the greedy algorithm, finds the optimal word
+segmentation of an input character sequence. Your algorithm will consider costs
+based simply on a unigram cost function. |UniformCostSearch| (UCS) is
+implemented for you in |util.py|, and you should make use of it here.
+\footnote{Solutions that use UCS ought to exhibit fairly fast execution time for
+this problem, so using A* here is unnecessary.}
+
+Before jumping into code, you should think about how to frame this problem as a
+state-space {\bf search problem}.  How would you represent a state?  What are
+the successors of a state?  What are the state transition costs?  (You don't
+need to answer these questions in your writeup.)
+
+Fill in the member functions of the |SegmentationProblem| class and the
+|segmentWords| function.
+
+The argument |unigramCost| is a function that takes in a single string
+representing a word and outputs its unigram cost. You can assume that all of the
+inputs would be in lower case.
+
+The function |segmentWords| should return the segmented sentence with spaces
+as delimiters, i.e. |' '.join(words)|.
+
+To request a segmentation, type |seg mystring| into the prompt.  For example:
+
+\begin{lstlisting}
+$ python submission.py
+Training language cost functions [corpus: leo-will.txt]... Done!
+
+>> seg thisisnotmybeautifulhouse
+
+Query (seg): thisisnotmybeautifulhouse
+
+this is not my beautiful house
+\end{lstlisting}
+
+{\em Hint: You are encouraged to refer to |NumberLineSearchProblem| and
+|GridSearchProblem| implemented in |util.py| for reference. They don't
+contribute to testing your submitted code but only serve as a guideline for what
+your code should look like.}
+
+{\em Hint: The actions that are valid for the |ucs| object can be
+accessed through |ucs.actions|.}

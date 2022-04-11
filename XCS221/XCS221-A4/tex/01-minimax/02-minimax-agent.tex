@@ -1,0 +1,92 @@
+\item \points{1b}
+
+Now fill out the |MinimaxAgent| class in |submission.py| using the above
+recurrence. Remember that your minimax agent should work with any number of
+ghosts, and your minimax tree should have multiple min layers (one for each
+ghost) for every max layer.
+
+Your code should also expand the game tree to an arbitrary depth. Score the
+leaves of your minimax tree with the supplied |self.evaluationFunction|, which
+defaults to |scoreEvaluationFunction|. The class |MinimaxAgent| extends
+|MultiAgentSearchAgent|, which gives access to |self.depth| and
+|self.evaluationFunction|. Make sure your minimax code makes reference to these
+two variables where appropriate, as these variables are populated from the
+command line options.
+
+{\bf {\em Implementation Hints}}
+\begin{itemize}
+  \item {\bf Read the comments in submission.py thoroughly before starting to
+  code!}
+
+  \item Pac-Man is always agent 0, and the agents move in order of increasing
+  agent index. Use |self.index| in your minimax implementation to refer to the
+  Pac-Man's index. Notice that only Pac-Man will actually be running your
+  |MinimaxAgent|.
+
+  \item All states in minimax should be |GameState|s, either passed in to
+  |getAction| or generated via |GameState.generateSuccessor|. In this
+  assignment, you will not be abstracting to simplified states.
+
+  \item You might find the functions described in the comments to the
+  |ReflexAgent| and |MinimaxAgent| useful.
+
+  % <!-- \item You might find the function
+  % |GameState.getLegalActions| useful, which returns all the possible legal
+  % moves, where each move is |Directions.X| for some X in the set
+  % {|NORTH, SOUTH, WEST, EAST, STOP|}. As suggested before, also go through
+  % the |ReflexAgent| code for descriptions of important methods, like
+  % |GameState.getPacmanState(), GameState.getGhostStates(), GameState.getScore()|,
+  % and so on. Other important methods are further documented inside
+  % the |MinimaxAgent| class.</p> -->
+
+  \item The evaluation function for this part is already written
+  (|self.evaluationFunction|), and you should call this function without
+  changing it. Use |self.evaluationFunction| in your definition of
+  $V_\text{minmax}$ wherever you used $\text{Eval}(s)$ in part $1a$. Recognize
+  that now we're evaluating {\em states} rather than actions. Look-ahead agents
+  evaluate {\em future states} whereas reflex agents evaluate {\em actions} from
+  the current state.
+
+  \item If there is a tie between multiple actions for the best move, you may
+  break the tie however you see fit.
+
+  \item The minimax values of the initial state in the |minimaxClassic| layout
+  are 9, 8, 7, -492 for depths 1, 2, 3 and 4 respectively. {\bf You can use
+  these numbers to verify whether your implementation is correct.} Note that
+  your minimax agent will often win, despite the dire prediction of depth 4
+  minimax search, whose command is shown below. Our agent wins 50-70\% of the
+  time: Be sure to test on a large number of games using the |-n| and |-q|
+  flags.
+
+  \begin{lstlisting}
+python pacman.py -p MinimaxAgent -l minimaxClassic -a depth=4
+\end{lstlisting}
+\end{itemize}
+{\em {\bf Further Observations}}
+
+These questions and observations are here for you to ponder upon; no need to
+include in the write-up.
+
+\begin{itemize}
+  \item On larger boards such as |openClassic| and |mediumClassic| (the
+  default), you'll find Pac-Man to be good at not dying, but quite bad at
+  winning. He'll often thrash around without making progress. He might even
+  thrash around right next to a dot without eating it. Don't worry if you see
+  this behavior. Why does Pac-Man thrash around right next to a dot?
+
+  \item Consider the following run:
+
+  \begin{lstlisting}
+python pacman.py -p MinimaxAgent -l trappedClassic -a depth=3
+\end{lstlisting}
+
+  Why do you think Pac-Man rushes the closest ghost in minimax search on
+  |trappedClassic|?
+
+  % <!--
+  % \item To increase the search depth achievable by your agent, remove the |Directions.STOP| action from Pac-Man's list of possible actions. Depth 2 should be pretty quick, but depth 3 or 4 will be slow. Don't worry, the next problem will speed up the search somewhat.
+
+  % \item You are welcome to, but not required to, remove |Directions.STOP| as a valid action (this is true for any part of the assignment).
+  % -->
+
+\end{itemize}

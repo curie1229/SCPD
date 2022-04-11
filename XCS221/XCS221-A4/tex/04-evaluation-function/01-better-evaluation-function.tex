@@ -1,0 +1,36 @@
+\item \points{4a}
+Write a better evaluation function for Pac-Man in the provided function
+|betterEvaluationFunction|. The evaluation function should evaluate states
+rather than actions. You may use any tools at your disposal for evaluation,
+including any |util.py| code from the previous assignments. With depth 2 search,
+your evaluation function should clear the |smallClassic| layout with two random
+ghosts more than half the time for full credit and still run at a reasonable
+rate.
+
+\begin{lstlisting}
+python pacman.py -l smallClassic -p ExpectimaxAgent -a evalFn=better -q -n 20
+\end{lstlisting}
+
+We will run your Pac-Man agent 20 times, and calculate the average score you
+obtained in the winning games. Starting from 1300, you obtain 1 point per 100
+point increase in your average winning score. In |grader.py|, you can see the
+how extra credit is awarded. For example, you get 2 points if your average
+winning score is between 1500 and 1600. In addition, the top 3 people in the
+class will get additional points.
+
+Check out the current top scorers on the leaderboard! You will be added
+automatically when you submit. You can also access the leaderboard by opening
+your submission on Gradescope and clicking "Leaderboard" on the top right
+corner.
+
+{\bf {\em Hints and Observations}}
+\begin{itemize}
+  \item Having gone through the rest of the assignment, you should play Pac-Man
+  again yourself and think about what kinds of features you want to add to the
+  evaluation function. How can you add multiple features to your evaluation
+  function?
+  \item You may want to use the reciprocal of important values rather than the
+  values themselves for your features.
+  \item The |betterEvaluationFunction| should run in the same time limit as the
+  other problems.
+\end{itemize}

@@ -1,0 +1,51 @@
+\item \points{2b}
+Implement an algorithm that finds optimal vowel insertions.  Use the UCS
+subroutines.
+
+When you've completed your implementation, the function |insertVowels| should
+return the reconstructed word sequence as a string with space delimiters, i.e.
+|` '.join(filledWords)|. Assume that you have a list of strings as the input,
+i.e. the sentence has already been split into words for you. Note that the empty
+string is a valid element of the list.
+
+The argument |queryWords| is the input sequence of vowel-free words.  Note that
+the empty string is a valid such word.  The argument |bigramCost| is a function
+that takes two strings representing two sequential words and provides their
+bigram score.  The special out-of-vocabulary beginning-of-sentence word
+|-BEGIN-| is given by |wordsegUtil.SENTENCE_BEGIN|.  The argument
+|possibleFills| is a function that takes a word as a string and returns a |set|
+of reconstructions.
+
+Since we use a limited corpus, some seemingly obvious strings may have no
+filling, such as |chclt -> {}|, where |chocolate| is actually a valid filling.
+Don't worry about these cases.
+
+{\em Note: If some vowel-free word $w$ has no reconstructions according to
+|possibleFills|, your implementation should consider $w$ itself as the sole
+possible reconstruction.
+
+Use the |ins| command in the program console to try your implementation.  For
+example:
+
+\begin{lstlisting}
+>> ins thts m n th crnr
+
+Query (ins): thts m n th crnr
+
+thats me in the corner
+\end{lstlisting}
+
+The console strips away any vowels you do insert, so you can actually type in
+plain English and the vowel-free query will be issued to your program.  This
+also means that you can use a single vowel letter as a means to place an empty
+string in the sequence.
+
+For example:
+\begin{lstlisting}
+>> ins its a beautiful day in the neighborhood
+
+Query (ins): ts  btfl dy n th nghbrhd
+
+its a beautiful day in the neighborhood
+\end{lstlisting}
+}

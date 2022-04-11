@@ -1,0 +1,46 @@
+\item {\bf CSP Solving}
+
+So far, we've only worked with unweighted CSPs, where $f_j(x)\in\{0,1\}$. In
+this problem, we will work with weighted CSPs, which associates a weight for
+each assignment $x$ based on the product of $m$ factor functions $f_1, \dots,
+f_m$:
+\[\text{Weight}(x) = \prod^m_{j=1}f_j(x)\]
+where each factor $f_j(x)\geq 0$. Our goal is to find the assignment(s) $x$ with
+the {\bf highest} weight. As in problem 0, we will assume that each factor is
+either a unary factor (depends on exactly one variable) or a binary factor
+(depends on exactly two variables).
+
+For weighted CSP construction, you can refer to the CSP examples we have
+provided in |util.py| for guidance (|create_map_coloring_csp()| and
+|create_weighted_csp()|). You can try these examples out by running
+
+\begin{lstlisting}
+python run_p1.py
+\end{lstlisting}
+
+Notice we are already able to solve the CSPs because in |submission.py|, a basic
+backtracking search is already implemented. Recall that backtracking search
+operates over partial assignments and associates each partial assignment with a
+weight, which is the product of all the factors that depend only on the assigned
+variables. When we assign a value to a new variable $X_i$, we multiply in all
+the factors that depend only on $X_i$ and the previously assigned variables. The
+function |get_delta_weight()| returns the contribution of these new factors
+based on the |unaryFactors| and |binaryFactors|. An important case is when
+|get_delta_weight()| returns 0. In this case, any full assignment that extends
+the new partial assignment will also be zero, so {\em there is no need to search
+further with that new partial assignment}.
+
+Take a look at |BacktrackingSearch.reset_results()| to see the other fields
+which are set as a result of solving the weighted CSP. You should read
+|submission.BacktrackingSearch| carefully to make sure that you understand how
+the backtracking search is working on the CSP.
+
+\begin{enumerate}
+
+  \input{02-CSP-solving/01-n-queens}
+
+  \input{02-CSP-solving/02-heuristic}
+
+  \input{02-CSP-solving/03-arc-consistency}
+
+\end{enumerate}

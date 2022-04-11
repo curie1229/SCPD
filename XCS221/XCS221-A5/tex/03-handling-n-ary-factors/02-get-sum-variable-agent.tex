@@ -1,0 +1,13 @@
+\item \points{2b}
+Now let's do the general case in code: implement |get_sum_variable()|, which
+takes in a sequence of non-negative integer-valued variables and returns a
+variable whose value is constrained to equal the sum of the variables. You will
+need to access the domains of the variables passed in, which you can assume
+contain only non-negative integers. The parameter |maxSum| is the maximum sum
+possible of all the variables. You can use this information to decide the proper
+domains for your auxiliary variables.
+
+How can this function be useful? Suppose we wanted to enforce the constraint
+$[X_1 + X_2 + X_3 \le K]$. We would call |get_sum_variable()| on $(X_1,X_2,X_3)$
+to get some auxiliary variable $Y$, and then add the constraint $[Y \le K]$.
+Note: You don't have to implement the $\le$ constraint for this part.

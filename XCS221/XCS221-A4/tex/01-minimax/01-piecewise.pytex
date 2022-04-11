@@ -1,0 +1,37 @@
+\item \points{1a}
+Before you code up Pac-Man as a minimax agent, notice that instead of just one
+adversary, Pac-Man could have multiple ghosts as adversaries. So we will extend
+the minimax algorithm from class, which had only one min stage for a single
+adversary, to the more general case of multiple adversaries. In particular,
+{\em your minimax tree will have multiple min layers (one for
+each ghost) for every max layer.}
+
+Formally, consider the limited depth tree minimax search with evaluation
+functions taught in class. Suppose there are $n+1$ agents on the board, $a_0,
+\ldots , a_n$, where $a_0$ is Pac-Man and the rest are ghosts. Pac-Man acts as a
+max agent, and the ghosts act as min agents. A single {\em depth} consists of
+all $n+1$ agents making a move, so depth 2 search will involve Pac-Man and each
+ghost moving two times. In other words, a depth of 2 corresponds to a height of
+$2(n+1)$ in the minimax game tree.
+
+Write the recurrence for $V_{\text{minimax}}(s,d)$ in math as a {\em piecewise
+function}. You should express your answer in terms of the following functions:
+\begin{itemize}
+\item $\text{IsEnd}(s)$, which tells you if $s$ is an end state.
+\item $\text{Utility}(s)$, the utility of a state $s$.
+\item $\text{Eval}(s)$, an evaluation function for the state $s$.
+\item $\text{Player}(s)$, which returns the player whose turn it is in state
+$s$.
+\item $\text{Actions}(s)$, which returns the possible actions that can be taken
+from state $s$.
+\item $\text{Succ}(s,a)$, which returns the successor state resulting from
+taking an action $a$ at a certain state $s$.
+\end{itemize}
+
+You may use any relevant notation introduced in lecture.
+
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_1a(.*?)% <SCPD_SUBMISSION_TAG>_1a', f.read(), re.DOTALL)).group(1))
+🐍
