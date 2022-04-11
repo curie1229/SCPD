@@ -1,0 +1,23 @@
+\item \points{5a}
+Suppose we have $K=2$ cars and one time step $T=1$. Write an expression for the
+conditional distribution $\mathbb P(C_{11}, C_{12} \mid E_1 = e_1)$ as a
+function of the PDF of a Gaussian $p_{\mathcal N}(v; \mu, \sigma^2)$
+and the prior probability $p(c_{11})$ and $p(c_{12})$ over car locations. Your
+final answer should not contain variables $d_{11}$, $d_{12}$.
+
+Remember that $p_{\mathcal N}(v; \mu, \sigma^2)$ is the probability of
+a random variable, $v$, in a Gaussian distribution with mean $\mu$ and standard
+deviation $\sigma$.
+
+{\em Hint: for $K=1$, the answer would be
+\[\mathbb P(C_{11} = c_{11} \mid E_1 = e_1) \propto p(c_{11}) p_{\mathcal N}
+(e_{11}; \|a_1 - c_{11}\|, \sigma^2).\]
+
+where $a_t$ is the position of the car at time t. You might find it useful to
+draw the Bayesian network and think about the distribution of $E_t$ given
+$D_{t1}, \dots, D_{tK}$.}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_5a(.*?)% <SCPD_SUBMISSION_TAG>_5a', f.read(), re.DOTALL)).group(1))
+🐍

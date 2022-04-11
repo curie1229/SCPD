@@ -1,0 +1,51 @@
+\def\assignmentnum{6 }
+\def\assignmentname{Car Tracking}
+\def\assignmenttitle{XCS221 Assignment \assignmentnum --- \assignmentname}
+
+
+\input{macros}
+\input{py-macros}
+
+\begin{document}
+
+\pagestyle{myheadings} \markboth{}{\assignmenttitle}
+
+{\huge\noindent \assignmenttitle}
+
+\ruleskip
+
+{\bf Due {\due }.}
+
+\medskip
+
+\input{00-instructions/00-main}
+
+\ruleskip
+
+\clearpage
+
+\include{00-intro}
+\clearpage
+
+\begin{enumerate}[wide, labelindent=0pt]
+
+  \input{01-bayesian-network-basics/00-main}
+  \clearpage
+
+  \input{02-emission-probabilities/00-main}
+  \clearpage
+
+  \input{03-transition-probabilities/00-main}
+  \clearpage
+
+  \input{04-particle-filtering/00-main}
+  \clearpage
+
+  \input{05-which-car/00-main}
+  \clearpage
+
+\end{enumerate}
+
+\include{00-outro}
+
+\end{document}

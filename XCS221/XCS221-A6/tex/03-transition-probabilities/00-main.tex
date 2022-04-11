@@ -1,0 +1,23 @@
+\item {\bf Transition Probabilities}
+
+Now, let's consider the case where the other car is moving according to
+transition probabilities $p(c_{t+1} \mid c_t)$. We have provided the transition
+probabilities for you in |self.transProb|. Specifically,
+|self.transProb[(oldTile, newTile)]| is the probability of the other car being
+in |newTile| at time step $t+1$ given that it was in |oldTile| at time step $t$.
+
+In this part, you will implement a function |elapseTime| that updates the
+posterior probability about the location of the car at a {\bf current} time $t$
+\[\mathbb P(C_t = c_t \mid D_1 = d_1, \dots, D_t = d_t)\]
+
+to the {\bf next} time step $t+1$ conditioned on the same evidence, via the 
+recurrence:
+\[\mathbb P(C_{t+1} = c_{t+1} \mid D_1 = d_1, \dots, D_t = d_t) \propto \sum_{c_t} \mathbb P(C_t = c_t \mid D_1 = d_1, \dots, D_t = d_t) p(c_{t+1} \mid c_t).\]
+
+Again, the posterior probability is stored as |self.belief| in |ExactInference|.
+
+\begin{enumerate}
+
+  \input{03-transition-probabilities/01-elapse-time}
+
+\end{enumerate}

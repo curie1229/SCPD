@@ -1,0 +1,16 @@
+\item \points{5b}
+Assuming the prior $p(c_{1i})$ of where the cars start out is the same for all
+$i$ (i.e. for all K cars), show that the number of assignments for all $K$ cars
+$(c_{11}, \dots, c_{1K})$ that obtain the maximum value of $\mathbb P(C_{11} =
+c_{11}, \dots, C_{1K} = c_{1K} \mid E_1 = e_1)$ is at least $K!$.
+
+You can also assume that the car locations that maximize the probability above
+are unique ($C_{1i} \neq c_{1j}$ for all $i \neq j$).
+
+{\em Note: you don't need to produce a complicated proof for this question.
+It is acceptable to provide a clear explanation based on your intuitive understanding of the scenario.}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_5b(.*?)% <SCPD_SUBMISSION_TAG>_5b', f.read(), re.DOTALL)).group(1))
+🐍

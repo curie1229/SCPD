@@ -1,0 +1,25 @@
+\item {\bf Emission Probabilities}
+
+In this problem, we assume that the other car is stationary (e.g., $C_t =
+C_{t-1}$ for all time steps $t$). You will implement a function |observe| that
+upon observing a new distance measurement $D_t = d_t$ updates the current
+posterior probability from
+\[\mathbb P(C_t \mid D_1 = d_1, \dots, D_{t-1} = d_{t-1})\]
+
+to
+\[\mathbb P(C_t \mid D_1 = d_1, \dots, D_t = d_t) \propto \mathbb P(C_t \mid D_1
+= d_1, \dots, D_{t-1} = d_{t-1}) p(d_t \mid c_t),\]
+
+where we have multiplied in the emission probabilities $p(d_t \mid c_t)$
+described earlier under ``Modeling car locations". The current posterior
+probability is stored as |self.belief| in |ExactInference|.
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{media/emission.png}
+\end{center}
+
+\begin{enumerate}
+
+  \input{02-emission-probabilities/01-stationary-car}
+
+\end{enumerate}

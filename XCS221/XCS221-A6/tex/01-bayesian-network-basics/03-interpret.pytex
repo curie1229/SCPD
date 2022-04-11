@@ -1,0 +1,21 @@
+\item \points{1c}
+Suppose $\epsilon = 0.1$ and $\eta = 0.2$.
+
+\begin{enumerate}
+  \item Compute and compare the probabilities $\mathbb P(C_2 = 1 \mid D_2 = 0)$
+  and $\mathbb P(C_2 = 1 \mid D_2 = 0, D_3 = 1)$. Give numbers, round your answer to 4 significant digits.
+  
+  \item How did adding the second sensor reading $D_3 = 1$ change the result?
+  Explain your intuition for why this change makes sense in terms of the car
+  positions and associated sensor observations.
+
+  \item What would you have to set $\epsilon$ to be while keeping $\eta = 0.2$
+  so that $\mathbb P(C_2 = 1 \mid D_2 = 0) = \mathbb P(C_2 = 1 \mid D_2 = 0, D_3
+  = 1)$? Explain your intuition in terms of the car positions with respect to
+  the observations.
+\end{enumerate}
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_1c(.*?)% <SCPD_SUBMISSION_TAG>_1c', f.read(), re.DOTALL)).group(1))
+🐍

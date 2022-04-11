@@ -1,0 +1,11 @@
+\item \points{5c}
+For general $K$, what is the treewidth corresponding to the posterior
+distribution over all $K$ car locations at all $T$ time steps conditioned on all
+the sensor readings:
+\[\mathbb P(C_{11} = c_{11}, \dots, C_{1K} = c_{1K}, \dots, C_{T1} = c_{T1}, \dots, C_{TK} = c_{TK} \mid E_1 = e_1, \dots, E_T = e_T)?\]
+Briefly justify your answer.
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_5c(.*?)% <SCPD_SUBMISSION_TAG>_5c', f.read(), re.DOTALL)).group(1))
+🐍

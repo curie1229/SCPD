@@ -1,0 +1,33 @@
+\item {\bf Which Car is it?}
+
+So far, we have assumed that we have a distinct noisy distance reading for each
+car, but in reality, our microphone would just pick up an undistinguished set of
+these signals, and we wouldn't know which distance reading corresponds to which
+car. First, let's extend the notation from before: let $C_{ti} \in \mathbb R^2$
+be the location of the $i$-th car at the time step $t$, for $i = 1, \dots, K$
+and $t = 1, \dots, T$. Recall that all the cars move independently according to
+the transition dynamics as before.
+
+Let $D_{ti} \in \mathbb R$ be the noisy distance measurement of the $i$-th car
+at time step $t$, which is now not directly observed. Instead, we observe the
+{\bf set} of distances $D_t = \{ D_{t1}, \dots, D_{tK} \}$.  (For simplicity,
+we'll assume that all distances are distinct values.) Alternatively, you can
+think of $E_t = (E_{t1}, \dots, E_{tK})$ as a list which is a uniformly random
+permutation of the noisy distances $(D_{t1}, \dots, D_{tK})$. For example,
+suppose $K=2$ and $T = 2$. Before, we might have gotten distance readings of $1$
+and $2$ for the first car and $3$ and $4$ for the second car at time steps $1$
+and $2$, respectively. Now, our sensor readings would be permutations of $\{1,
+3\}$ (at time step $1$) and $\{2, 4\}$ (at time step $2$). Thus, even if we knew
+the second car was distance $3$ away at time $t = 1$, we wouldn't know if it
+moved further away (to distance $4$) or closer (to distance $2$) at time $t =
+2$.
+
+\begin{enumerate}
+
+  \input{05-which-car/01-distribution}
+
+  \input{05-which-car/02-maximum}
+
+  \input{05-which-car/03-treewidth}
+
+\end{enumerate}

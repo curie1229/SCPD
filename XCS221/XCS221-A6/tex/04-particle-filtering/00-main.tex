@@ -1,0 +1,22 @@
+\item {\bf Particle Filtering}
+
+Though exact inference works well for the small maps, it wastes a lot of effort
+computing probabilities for {\em every available tile}, even for tiles that are
+unlikely to have a car on them.  We can solve this problem using a particle
+filter. Updates to the particle filter have complexity that's linear in the
+number of particles, rather than linear in the number of tiles.
+
+For a great conceptual explanation of how particle filtering works, check out
+\href{https://www.youtube.com/watch?v=aUkBa1zMKv4}{this video} on using particle 
+filtering to estimate an airplane's altitude. 
+
+In this problem, you'll implement two short but important methods for the
+|ParticleFilter| class in |submission.py|. When you're finished, your code
+should be able to track cars nearly as effectively as it does with exact
+inference.
+
+\begin{enumerate}
+
+  \input{04-particle-filtering/01-particles}
+
+\end{enumerate}

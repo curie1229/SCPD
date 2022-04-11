@@ -1,0 +1,26 @@
+\item \points{3a}
+Finish |ExactInference| by implementing the |elapseTime| method. When you are
+all done, you should be able to track a moving car well enough to drive
+autonomously by running the following:
+
+\begin{lstlisting}
+python drive.py -a -d -k 1 -i exactInference
+\end{lstlisting}
+
+{\em Notes:
+\begin{itemize}
+  \item You can also drive autonomously in the presence of more than one car:
+\begin{lstlisting}
+python drive.py -a -d -k 3 -i exactInference
+\end{lstlisting}
+
+  \item You can also drive down Lombard:
+\begin{lstlisting}
+python drive.py -a -d -k 3 -i exactInference -l lombard
+\end{lstlisting}
+
+  On Lombard, the autonomous driver may attempt to drive up and down the street
+  before heading towards the target area. Again, focus on the car tracking
+  component, instead of the actual driving.
+\end{itemize}
+}

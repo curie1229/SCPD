@@ -1,0 +1,10 @@
+\item \points{1b}
+Suppose a time step has elapsed and we got another sensor reading, $D_3 = 1$,
+but we are still interested in $C_2$. Compute the posterior distribution
+$\mathbb P(C_2 = 1 \mid D_2 = 0, D_3 = 1)$. The resulting expression might be
+moderately complex. We encourage you to draw out the (factor) graph.
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_1b(.*?)% <SCPD_SUBMISSION_TAG>_1b', f.read(), re.DOTALL)).group(1))
+🐍
